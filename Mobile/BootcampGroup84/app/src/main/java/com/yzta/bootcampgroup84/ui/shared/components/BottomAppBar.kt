@@ -36,8 +36,8 @@ fun BottomAppBar(navController: NavController, modifier: Modifier = Modifier) {
         navItemList.forEachIndexed { index, navItem ->
             var selected = when(index) {
                 0 -> currentRoute == Screens.DashboardScreen.screenName == true
-                1 -> currentRoute == Screens.DashboardScreen.screenName == true
-                2 -> currentRoute == Screens.DashboardScreen.screenName == true
+                1 -> currentRoute == Screens.MenuScreen.screenName == true
+                2 -> currentRoute == Screens.SettingsScreen.screenName == true
                 else -> false
             }
 

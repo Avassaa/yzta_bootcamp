@@ -1,5 +1,6 @@
 package com.yzta.bootcampgroup84.ui.navigation
 
+import DashboardPage
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -9,7 +10,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.yzta.bootcampgroup84.interfaces.Screens
-import com.yzta.bootcampgroup84.ui.screens.dashboard.DashboardPage
 import com.yzta.bootcampgroup84.ui.screens.login.LoginPage
 @Composable
 fun NavigationGraph(navController: NavHostController,  paddingValues: PaddingValues) {
