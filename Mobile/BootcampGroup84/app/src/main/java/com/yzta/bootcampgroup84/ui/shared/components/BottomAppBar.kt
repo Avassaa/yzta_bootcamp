@@ -1,6 +1,7 @@
 package com.yzta.bootcampgroup84.ui.shared.components
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Settings
@@ -26,7 +27,7 @@ import com.yzta.bootcampgroup84.ui.theme.StressBabyBlue
 fun BottomAppBar(navController: NavController, modifier: Modifier = Modifier) {
     val navItemList = listOf(
         NavItem("Dashboard", Icons.Default.Home, 3),
-        NavItem("Menu", Icons.Default.Menu, 5),
+        NavItem("Journal", Icons.Default.Edit, 0),
         NavItem("Settings", Icons.Default.Settings, 0),
     )
 
