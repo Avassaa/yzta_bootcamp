@@ -2,9 +2,9 @@
 
 ## Bu proje, günlük yaşamın farkında olmadan üzerimizdeki etkilerini anlamak ve kullanıcılara bu konuda içgörüler sunmak amacıyla geliştirilmiştir.
 
-## 🚀 Ürün Açıklaması: Momento
+## 🚀 Ürün Açıklaması: SoulPixel
 
-## Momento, kullanıcıların gün içinde farkında olmadan maruz kaldıkları durumların ve ortamların kendilerini nasıl etkilediğini anlamalarına yardımcı olan bir mobil uygulamadır. Uygulama, kullanıcılardan günde üç kez fotoğraf çekmelerini veya kısa günlük girdileri oluşturmalarını isteyecektir. Bu girdiler, **LLM (Büyük Dil Modeli)** ile analiz edilecek ve kullanıcılara kişiselleştirilmiş geri bildirimler sunulacaktır. Ayrıca, kullanıcılara günlük olarak yaşam kalitelerini artırmaya yönelik ipuçları ve tavsiyeler verilecektir.
+SoulPixel, kullanıcıların gün içinde farkında olmadan maruz kaldıkları durumların ve ortamların kendilerini nasıl etkilediğini anlamalarına yardımcı olan bir mobil uygulamadır. Uygulama, kullanıcılardan günde üç kez fotoğraf çekmelerini veya kısa günlük girdileri oluşturmalarını isteyecektir. Bu girdiler, **LLM (Büyük Dil Modeli)** ile analiz edilecek ve kullanıcılara kişiselleştirilmiş geri bildirimler sunulacaktır. Ayrıca, kullanıcılara günlük olarak yaşam kalitelerini artırmaya yönelik ipuçları ve tavsiyeler verilecektir.
 
 ## 🎯 Hedef Kitle
 
@@ -26,13 +26,15 @@
 
 ## 📋 Ürün İş Listesi (Product Backlog)
 
-## [https://trello.com/b/Y50wdWo3/yzta-grup-84](https://trello.com/b/Y50wdWo3/yzta-grup-84)
+[https://trello.com/b/Y50wdWo3/yzta-grup-84](https://trello.com/b/Y50wdWo3/yzta-grup-84)
 
 ## 📊 Sprint Puanlama Mantığı
 
 - **Sprint 1:** 200 puan - İlk planlama ve prototip aşaması
 - **Sprint 2:** 300 puan - Sayfaların mock data ile tasarımı ve UI/UX geliştirme aşaması
 - **Sprint 3:** 500 puan - Backend ile bağlantı ve final testlerinin yapılacağı sprint
+
+---
 
 ## 🗓️ Sprint 1
 
@@ -102,6 +104,36 @@ Sprint sonunda, belirlenen hedeflere ne ölçüde ulaşıldığı ve projenin me
 
 Biraz yavaş başlansa da, dashboard sayfasının genel yapısı oluşturuldu, sadece backend ile bağlanması kaldı. Navigation graph'ımızdaki hataların hepsi düzeltildi. Takım çok fazla buluşamasa da diğer sprint için daha planlı şekilde planlama planlandı.
 
-###
+</details>
+
+---
+
+## 🗓️ Sprint 3
+
+<details>
+<summary>Detayları Göster</summary>
+
+### 📝 Sprint Notları
+
+Bu sprintte projenin adı **SoulPixel** olarak değiştirildi ve uygulamanın UI tasarımı yeniden ele alındı. Yapay zeka analizi entegre edilerek, Python **PIL (Pillow)** kütüphanesi aracılığıyla **Gemini** modeli kullanıldı. Kullanıcıların paylaştığı günlükler, Instagram hikayeleri gibi diğer kullanıcılarla paylaşılabilecek şekilde geliştirildi, ancak ana ekranda (dashboard) yalnızca kullanıcının kendi hikayeleri görünecek.
+
+### 📊 Sprint Puanlama Mantığı & Toplanan Puanlar
+
+Sprint 3 için belirlenen toplam puan 500'dür.
+
+### 📅 Daily Scrum
+
+- **Simya:** Uygulamanın yeni adı olan SoulPixel'e uygun olacak şekilde yeni UI/UX tasarımlarını yapmaya başladı.
+- **Baha:** Kullanıcıların hikayelerini paylaşabilmesi için gerekli frontend entegrasyonlarını ve dashboardda yalnızca kendi hikayelerinin gösterilmesi için geliştirmeler yaptı.
+- **Ömer:** Gemini modelini kullanarak günlüklerin analiz edilmesi için backend tarafında gerekli endpointleri ve Python PIL kütüphanesi entegrasyonunu tamamladı.
+- **Nazlı ve Azra:** Geliştirilen yeni özelliklerin test süreçlerine ve bug giderme çalışmalarına odaklandı.
+
+### 🚀 Sprint Review
+
+Sprint sonunda, uygulamanın yeni adıyla birlikte tüm yeni özellikler başarılı bir şekilde entegre edildi. Backend bağlantısı ve yapay zeka analizi gibi kritik özelliklerin sorunsuz çalıştığı doğrulandı.
+
+### 🔄 Sprint Retrospective
+
+Sprintin başında yaşanan isim ve tasarım değişikliği süreci, takımın hızlı adaptasyonu sayesinde başarılı bir şekilde atlatıldı. Takım üyeleri arasındaki iletişim ve iş birliğinin artırılması, projenin daha hızlı ilerlemesine katkı sağladı. Gelecek sprintler için daha dinamik ve esnek bir planlama yapılması kararlaştırıldı.
 
 </details>

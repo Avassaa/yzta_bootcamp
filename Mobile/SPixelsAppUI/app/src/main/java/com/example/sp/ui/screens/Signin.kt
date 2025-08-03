@@ -155,7 +155,6 @@ fun SignInScreen(
 
             Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
                 Image(painter = painterResource(id = R.drawable.google_icon), contentDescription = "Google", modifier = Modifier.size(48.dp))
-                Image(painter = painterResource(id = R.drawable.fb_icon), contentDescription = "Facebook", modifier = Modifier.size(48.dp))
             }
 
             Spacer(modifier = Modifier.height(48.dp))

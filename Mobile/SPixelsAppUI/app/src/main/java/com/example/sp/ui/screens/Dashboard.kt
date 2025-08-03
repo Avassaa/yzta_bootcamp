@@ -7,22 +7,43 @@ import androidx.compose.foundation.background
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.Text
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.layout.ContentScale
 import com.example.sp.R
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.example.sp.ui.components.BottomNavBar
+import com.example.sp.ui.viewmodels.JournalViewModel
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Icon
 
 @Composable
-fun DashboardScreen(navController: NavController) {
+fun DashboardScreen(navController: NavController,
+                    viewModel: JournalViewModel = viewModel()
+) {
+    val userEntries by viewModel.userEntries.collectAsState() // Changed from publicEntries
     val scrollState = rememberScrollState()
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -50,83 +71,195 @@ fun DashboardScreen(navController: NavController) {
                         .padding(top = 300.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(
-                        text = "July",
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
+                    // Header Section
+                    Card(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 42.dp, bottom = 8.dp),
-                        textAlign = TextAlign.Start
-                    )
-
-                    // Calendar
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 36.dp)
+                            .padding(horizontal = 20.dp)
+                            .shadow(8.dp, RoundedCornerShape(20.dp)),
+                        shape = RoundedCornerShape(20.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color.White.copy(alpha = 0.95f)
+                        )
                     ) {
-                        val daysOfWeek = listOf("Su", "Mo", "Tu", "We", "Th", "Fr", "Sa")
-                        val calendar = listOf(
-                            listOf("29", "30", "1", "2", "3", "4", "5"),
-                            listOf("6", "7", "8", "9", "10", "11", "12"),
-                            listOf("13", "14", "15", "16", "17", "18", "19"),
-                            listOf("20", "21", "22", "23", "24", "25", "26"),
-                            listOf("27", "28", "29", "30", "31", "1", "2")
-                        )
-
-                        val cellColors = listOf(
-                            listOf("#FFF9B1", "#FFF9B1", "#E95B5B", "#90CAF9", "#B39DDB", "#B39DDB", "#B39DDB"),
-                            listOf("#90CAF9", "#90CAF9", "#90CAF9", "#B39DDB", "#B39DDB", "#B39DDB", "#90CAF9"),
-                            listOf("#FFF9B1", "#90CAF9", "#90CAF9", "#90CAF9", "#E95B5B", "#E95B5B", "#90CAF9"),
-                            listOf("#90CAF9", "#90CAF9", "#B39DDB", "#B39DDB", "#B39DDB", "#B39DDB", "#B39DDB"),
-                            listOf("#90CAF9", "#90CAF9", "#90CAF9", "#90CAF9", "#FFF9B1", "#FFF9B1", "#FFF9B1")
-                        )
-
-                        Row(modifier = Modifier.fillMaxWidth()) {
-                            daysOfWeek.forEach { day ->
-                                Box(
-                                    modifier = Modifier
-                                        .weight(1f)
-                                        .padding(2.dp),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Text(text = day, fontSize = 14.sp)
-                                }
-                            }
-                        }
-
-                        calendar.forEachIndexed { rowIndex, week ->
-                            Row(modifier = Modifier.fillMaxWidth()) {
-                                week.forEachIndexed { colIndex, day ->
-                                    Box(
-                                        modifier = Modifier
-                                            .weight(1f)
-                                            .aspectRatio(0.9f)
-                                            .padding(1.9.dp)
-                                            .background(
-                                                color = Color(android.graphics.Color.parseColor(cellColors[rowIndex][colIndex])),
-                                                shape = RoundedCornerShape(4.dp)
-                                            ),
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Text(text = day)
-                                    }
-                                }
-                            }
+                        Column(
+                            modifier = Modifier.padding(20.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                text = "Your Journal Journey",
+                                style = MaterialTheme.typography.headlineMedium.copy(
+                                    fontWeight = FontWeight.Bold
+                                ),
+                                color = MaterialTheme.colorScheme.primary,
+                                textAlign = TextAlign.Center
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Text(
+                                text = "Track your emotions and thoughts",
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+                                textAlign = TextAlign.Center
+                            )
                         }
                     }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Text(
+                        text = "Your Recent Journals",
+                        style = MaterialTheme.typography.headlineSmall.copy(
+                            fontWeight = FontWeight.Bold
+                        ),
+                        color = Color.Black,
+                        modifier = Modifier
+                            .padding(start = 20.dp, bottom = 8.dp)
+                            .align(Alignment.Start)
+                    )
+
+                    // Enhanced Journal Entries List
+                    LazyColumn(
+                        modifier = Modifier.height(200.dp),
+                        contentPadding = PaddingValues(horizontal = 20.dp, vertical = 4.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        items(userEntries) { entry ->
+                            EnhancedJournalCard(entry = entry, onClick = {
+                                navController.navigate("analysis/${entry.id}")
+                            })
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(48.dp))
+
+                    // Calendar Section
+
+
+                    Spacer(modifier = Modifier.height(100.dp)) // Space for bottom nav
                 }
             }
-
-          //  Spacer(modifier = Modifier.height(100.dp)) // BottomNavBar için boşluk
         }
 
-        // Sabit Bottom Navigation Bar
+        // Bottom Navigation Bar
         Box(
             modifier = Modifier.align(Alignment.BottomCenter)
         ) {
             BottomNavBar(navController = navController)
+        }
+    }
+}
+
+@Composable
+fun EnhancedJournalCard(entry: com.example.sp.data.models.JournalEntry, onClick: () -> Unit) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .shadow(6.dp, RoundedCornerShape(18.dp)),
+        shape = RoundedCornerShape(18.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White.copy(alpha = 0.95f)
+        )
+    ) {
+        Box {
+            // Gradient background
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        Brush.horizontalGradient(
+                            colors = listOf(
+                                MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.1f),
+                                MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.1f)
+                            )
+                        )
+                    )
+            )
+
+            Row(
+                modifier = Modifier.padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Profile image with enhanced styling
+                Box(
+                    modifier = Modifier
+                        .size(64.dp)
+                        .background(
+                            Brush.linearGradient(
+                                colors = listOf(
+                                    MaterialTheme.colorScheme.primary.copy(alpha = 0.2f),
+                                    MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)
+                                )
+                            ),
+                            CircleShape
+                        )
+                        .padding(2.dp)
+                ) {
+                    AsyncImage(
+                        model = entry.entryPhotoUrl.ifEmpty { R.drawable.profile_placeholder },
+                        contentDescription = entry.userName,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .clip(CircleShape),
+                        contentScale = ContentScale.Crop
+                    )
+                }
+
+                Spacer(modifier = Modifier.width(16.dp))
+
+                Column(
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Person,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = entry.userName,
+                            style = MaterialTheme.typography.titleMedium.copy(
+                                fontWeight = FontWeight.Bold
+                            ),
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Face,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.secondary,
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = entry.feelingText,
+                            maxLines = 2,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
+                        )
+                    }
+                }
+
+                // Decorative element
+                Box(
+                    modifier = Modifier
+                        .size(8.dp)
+                        .background(
+                            MaterialTheme.colorScheme.primary.copy(alpha = 0.6f),
+                            CircleShape
+                        )
+                )
+            }
         }
     }
 }

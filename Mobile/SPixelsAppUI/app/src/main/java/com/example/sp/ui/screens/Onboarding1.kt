@@ -28,7 +28,6 @@ fun Onboarding1Screen() {
             contentScale = ContentScale.FillWidth
         )
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text("Onboarding 1 Screen")
     }
     }
 }
