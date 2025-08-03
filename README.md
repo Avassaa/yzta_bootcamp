@@ -115,11 +115,11 @@ Biraz yavaş başlansa da, dashboard sayfasının genel yapısı oluşturuldu, s
 
 ### 📝 Sprint Notları
 
-Bu sprintte projenin adı **SoulPixel** olarak değiştirildi ve uygulamanın UI tasarımı yeniden ele alındı. Yapay zeka analizi entegre edilerek, Python **PIL (Pillow)** kütüphanesi aracılığıyla **Gemini** modeli kullanıldı. Kullanıcıların paylaştığı günlükler, Instagram hikayeleri gibi diğer kullanıcılarla paylaşılabilecek şekilde geliştirildi, ancak ana ekranda (dashboard) yalnızca kullanıcının kendi hikayeleri görünecek.
+Bu sprintte projenin adı **SoulPixel** olarak değiştirildi ve uygulamanın UI tasarımı yeniden ele alındı(sıfırdan yapıldı). Yapay zeka analizi entegre edilerek, Python **PIL (Pillow)** kütüphanesi aracılığıyla **Gemini** modeli kullanıldı. Kullanıcıların paylaştığı günlükler, Instagram hikayeleri gibi diğer kullanıcılarla paylaşılabilecek şekilde geliştirildi, ancak ana ekranda (dashboard) yalnızca kullanıcının kendi hikayeleri görünecek.
 
 ### 📊 Sprint Puanlama Mantığı & Toplanan Puanlar
 
-Sprint 3 için belirlenen toplam puan 500'dür.
+Sprint 3 için belirlenen toplam puan son sprint olmasından ve eklediğimiz yeni entegrasyonlardan dolayı 500'dür.
 
 ### 📅 Daily Scrum
 
@@ -128,12 +128,24 @@ Sprint 3 için belirlenen toplam puan 500'dür.
 - **Ömer:** Gemini modelini kullanarak günlüklerin analiz edilmesi için backend tarafında gerekli endpointleri ve Python PIL kütüphanesi entegrasyonunu tamamladı.
 - **Nazlı ve Azra:** Geliştirilen yeni özelliklerin test süreçlerine ve bug giderme çalışmalarına odaklandı.
 
+##### Daily scrum yapıldı ancak ekran görüntüsü almayı unuttuğumuz için ekleyemiyoruz.
+
+#### Belgeler ve Ekler
+
+- ![Product 1](ProjectManagement/Sprint3Documents/product1.png)
+- ![Product 2](ProjectManagement/Sprint3Documents/product2.png)
+- ![Product 3](ProjectManagement/Sprint3Documents/product3.png)
+- ![Product 4](ProjectManagement/Sprint3Documents/product4.png)
+- ![Sprint 3](ProjectManagement/Sprint3Documents/sprint3.png)
+
+###### Bütün taskler tamamlandı.
+
 ### 🚀 Sprint Review
 
 Sprint sonunda, uygulamanın yeni adıyla birlikte tüm yeni özellikler başarılı bir şekilde entegre edildi. Backend bağlantısı ve yapay zeka analizi gibi kritik özelliklerin sorunsuz çalıştığı doğrulandı.
 
 ### 🔄 Sprint Retrospective
 
-Sprintin başında yaşanan isim ve tasarım değişikliği süreci, takımın hızlı adaptasyonu sayesinde başarılı bir şekilde atlatıldı. Takım üyeleri arasındaki iletişim ve iş birliğinin artırılması, projenin daha hızlı ilerlemesine katkı sağladı. Gelecek sprintler için daha dinamik ve esnek bir planlama yapılması kararlaştırıldı.
+Sprintin başında yaşanan isim ve tasarım değişikliği süreci, takımın hızlı adaptasyonu sayesinde başarılı bir şekilde atlatıldı. Takım üyeleri arasındaki iletişim ve iş birliğinin artırılması, projenin daha hızlı ilerlemesine ve projeyi vaktinde tamamlamamıza katkı sağladı. Yeni tasarım varolan projeye entegre edildi ve yeni özellikler eklendi.
 
 </details>
